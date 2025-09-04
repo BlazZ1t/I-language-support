@@ -2,7 +2,7 @@
   "Routine": {
     "prefix": "routine",
     "body": [
-      "routine ${1:name} is",
+      "routine ${1:name}() is",
       "    $0",
       "end"
     ],
