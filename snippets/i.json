@@ -20,7 +20,7 @@
   "For": {
     "prefix": "for",
     "body": [
-      "for ${1:i} in ${2:range} loop",
+      "for ${1:i} in ${2:range_start} .. ${3:range_end} loop",
       "    $0",
       "end"
     ],

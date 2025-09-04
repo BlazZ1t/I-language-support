@@ -1,8 +1,9 @@
 {
   "name": "i-language-support",
-  "displayName": "I Language Support",
+  "displayName": "Imperative I language support",
   "description": "This is an extension for easier development in small test I language",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "manatee-ware",
   "engines": {
     "vscode": "^1.54.0"
   },

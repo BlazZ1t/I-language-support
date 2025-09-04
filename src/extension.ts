@@ -25,6 +25,10 @@ export function activate(context: vscode.ExtensionContext) {
 			provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
 				const completions: vscode.CompletionItem[] = [];
 
+                for (const kw of keywords) {
+                    completions.push(new vscode.CompletionItem(kw, vscode.CompletionItemKind.Keyword));
+                }
+
 				const scopes: Scope[] = [];
                 let currentRoutine: string | null = null;
 
