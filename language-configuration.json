@@ -1,0 +1,25 @@
+{
+  "comments": {
+    "lineComment": "//"
+  },
+  "brackets": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"]
+  ],
+  "autoClosingPairs": [
+    { "open": "{", "close": "}" },
+    { "open": "[", "close": "]" },
+    { "open": "(", "close": ")" },
+    { "open": "\"", "close": "\"", "notIn": ["string"] }
+  ],
+  "onEnterRules": [
+    {
+      "beforeText": "^\\s*(routine .* is|while .* loop|for .* loop|if .* then|type .* is record)\\s*$",
+      "action": {
+        "indent": "indent",
+        "appendText": "end"
+      }
+    }
+  ]
+}

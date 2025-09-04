@@ -1,0 +1,144 @@
+{
+    "scopeName": "source.i",
+    "patterns": [
+        {
+            "name": "comment.line.double-slash.i",
+            "match": "//.*$"
+        },
+        {
+            "name": "keyword.control.i",
+            "match": "\\b(var|is|type|integer|real|boolean|true|false|record|end|array|while|loop|in|reverse|print|if|then|else|routine|not|and|or|xor|return|for)\\b"
+        },
+        {
+            "name": "constant.numeric.i",
+            "match": "\\b\\d+(\\.\\d+)?\\b"
+        },
+        {
+            "name": "keyword.operator.i",
+            "match": "(<=|>=|/=|<|>|=|\\+|\\-|\\*|/|%|:=)"
+        },
+        {
+            "name": "punctuation.brackets.i",
+            "match": "[()\\[\\]]"
+        },
+        {
+            "name": "variable.declaration.i",
+            "begin": "\\bvar\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+            "beginCaptures": { "1": { "name": "variable.other.i" } },
+            "end": "(?=\\s*(:|is|$))"
+        },
+        {
+            "name": "variable.assignment.i",
+            "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*(:=)",
+            "captures": {
+                "1": { "name": "variable.other.i" },
+                "2": { "name": "keyword.operator.i" }
+            }
+        },
+        {
+            "name": "type.definition.array.i",
+            "begin": "\\btype\\s+([A-Z][a-zA-Z0-9_]*)\\s+is\\s+array",
+            "beginCaptures": { "1": { "name": "type.user.i" } },
+            "end": "$"
+        },
+        {
+            "name": "type.definition.record.i",
+            "begin": "\\btype\\s+([A-Z][a-zA-Z0-9_]*)\\s+is\\s+record",
+            "beginCaptures": { "1": { "name": "type.user.i" } },
+            "end": "\\bend\\b",
+            "patterns": [
+                {
+                    "name": "variable.declaration.i",
+                    "begin": "\\bvar\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+                    "beginCaptures": { "1": { "name": "variable.other.i" } },
+                    "end": "(?=\\s*(:|is|$))"
+                }
+            ]
+        },
+        {
+            "name": "variable.typed.i",
+            "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*:\\s*([A-Z][a-zA-Z0-9_]*)",
+            "captures": { "1": { "name": "variable.other.i" }, "2": { "name": "type.user.i"} }
+        },
+        {
+            "name": "routine.block.i",
+            "begin": "\\broutine\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+            "beginCaptures": { "1": { "name": "entity.name.function.i" } },
+            "end": "\\bend\\b",
+            "patterns": [
+                { "include": "#inner-blocks" }
+            ]
+        },
+        {
+            "name": "loop.block.i",
+            "begin": "\\b(while)\\b",
+            "end": "\\bend\\b",
+            "patterns": [ { "include": "#inner-blocks" } ]
+        },
+        {
+            "name": "forloop.block.i",
+            "begin": "\\bfor\\s+[a-zA-Z_][a-zA-Z0-9_]*\\s+in\\b",
+            "end": "\\bend\\b",
+            "patterns": [ { "include": "#inner-blocks" } ]
+        },
+        {
+            "name": "if.block.i",
+            "begin": "\\bif\\b",
+            "end": "\\bend\\b",
+            "patterns": [ { "include": "#inner-blocks" } ]
+        }
+    ],
+    "repository": {
+        "inner-blocks": {
+            "patterns": [
+                { "include": "#variable-declarations" },
+                { "include": "#variable-assignments" },
+                { "include": "#type-definitions" },
+                { "include": "#keywords" }
+            ]
+        },
+        "variable-declarations": {
+            "patterns": [
+                {
+                    "name": "variable.declaration.i",
+                    "begin": "\\bvar\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+                    "beginCaptures": { "1": { "name": "variable.other.i" } },
+                    "end": "(?=\\s*(:|is|$))"
+                }
+            ]
+        },
+        "variable-assignments": {
+            "patterns": [
+                {
+                    "name": "variable.assignment.i",
+                    "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*(:=)",
+                    "captures": {
+                        "1": { "name": "variable.other.i" },
+                        "2": { "name": "keyword.operator.i" }
+                    }
+                }
+            ]
+        },
+        "type-definitions": {
+            "patterns": [
+                {
+                    "name": "type.definition.array.i",
+                    "begin": "\\btype\\s+([A-Z][a-zA-Z0-9_]*)\\s+is\\s+array",
+                    "beginCaptures": { "1": { "name": "type.user.i" } },
+                    "end": "$"
+                },
+                {
+                    "name": "type.definition.record.i",
+                    "begin": "\\btype\\s+([A-Z][a-zA-Z0-9_]*)\\s+is\\s+record",
+                    "beginCaptures": { "1": { "name": "type.user.i" } },
+                    "end": "\\bend\\b"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                { "name": "keyword.control.i", "match": "\\b(var|is|type|integer|real|boolean|true|false|record|end|array|while|loop|in|reverse|print|if|then|else|routine|not|and|or|xor|return)\\b" }
+            ]
+        }
+    }
+}

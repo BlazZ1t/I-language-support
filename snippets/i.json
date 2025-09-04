@@ -1,0 +1,47 @@
+{
+  "Routine": {
+    "prefix": "routine",
+    "body": [
+      "routine ${1:name} is",
+      "    $0",
+      "end"
+    ],
+    "description": "Routine skeleton"
+  },
+  "While": {
+    "prefix": "while",
+    "body": [
+      "while ${1:condition} loop",
+      "    $0",
+      "end"
+    ],
+    "description": "While loop skeleton"
+  },
+  "For": {
+    "prefix": "for",
+    "body": [
+      "for ${1:i} in ${2:range} loop",
+      "    $0",
+      "end"
+    ],
+    "description": "For loop skeleton"
+  },
+  "If": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition} then",
+      "    $0",
+      "end"
+    ],
+    "description": "If statement skeleton"
+  },
+  "Record": {
+    "prefix": "record",
+    "body": [
+      "type ${1:Name} is record",
+      "    $0",
+      "end"
+    ],
+    "description": "Record type skeleton"
+  }
+}
