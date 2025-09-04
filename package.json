@@ -11,6 +11,10 @@
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BlazZ1t/I-language-support.git"
+  },
   "contributes": {
     "languages":[
       {
