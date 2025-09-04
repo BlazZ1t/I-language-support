@@ -20,3 +20,8 @@ For now no type checker, probably will appear when we will do semantical analyze
 
 Initial release of I language support
 
+
+### 1.0.1
+
+Change for snippet to propose range like this: "start_range .. end_range"
+
